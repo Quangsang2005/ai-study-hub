@@ -4,49 +4,34 @@ import LoginPage from './pages/auth/LoginPage';
 import RegisterPage from './pages/auth/RegisterPage';
 import ForgotPasswordPage from './pages/auth/ForgotPasswordPage';
 import VerifyEmailPage from './pages/auth/VerifyEmailPage';
+import LandingPage from './pages/landing/LandingPage';
+import GuidePage from './pages/landing/GuidePage';
+import PricingPage from './pages/landing/PricingPage';
 
 function App() {
   return (
     <Routes>
       {/* Public Routes wrapped in PublicLayout */}
       <Route path="/" element={<PublicLayout />}>
-        {/* Redirect home to login since other pages are placeholders for now */}
-        <Route index element={<Navigate to="/login" replace />} />
+        {/* Render the main Landing Page as the home view */}
+        <Route index element={<LandingPage />} />
         
         <Route path="login" element={<LoginPage />} />
         
-        {/* Temporary placeholder routes to prevent router errors when clicking nav links */}
-        <Route
-          path="features"
-          element={
-            <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem', fontWeight: 600 }}>
-              Features Page (Coming Soon)
-            </div>
-          }
-        />
-        <Route
-          path="guide"
-          element={
-            <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem', fontWeight: 600 }}>
-              Guide Page (Coming Soon)
-            </div>
-          }
-        />
-        <Route
-          path="pricing"
-          element={
-            <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem', fontWeight: 600 }}>
-              Pricing Page (Coming Soon)
-            </div>
-          }
-        />
+        {/* Redirect features to index since the Landing page serves as the Features showcase */}
+        <Route path="features" element={<Navigate to="/" replace />} />
+        
+        {/* Active pages for guide and pricing */}
+        <Route path="guide" element={<GuidePage />} />
+        <Route path="pricing" element={<PricingPage />} />
+        
         <Route path="register" element={<RegisterPage />} />
         <Route path="forgot-password" element={<ForgotPasswordPage />} />
         <Route path="verify-email" element={<VerifyEmailPage />} />
       </Route>
 
       {/* Fallback route */}
-      <Route path="*" element={<Navigate to="/login" replace />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }
