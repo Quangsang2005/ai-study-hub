@@ -1,24 +1,50 @@
-import { Link } from 'react-router-dom';
-import AuthShell from '../../components/auth/AuthShell';
-import Input from '../../components/common/Input';
-import Button from '../../components/common/Button';
+import { useState } from "react"
+import Input from "../../components/common/Input";
+import Button from "../../components/common/Button";
 
-function LoginPage() {
+const LoginPage = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [emailError, setEmailError] = useState('');
+
+  const handleLogin = () => {
+    if(!email.includes('@')){
+      setEmailError('Email is not valid (missing @)')
+      return;
+    }
+    setEmailError('');
+    alert(`Log in with email: ${email}`)
+  };
+
   return (
-    <AuthShell
-      title="Welcome back"
-      description="Sign in to continue your study sessions, quizzes, and AI tutor conversations."
-      footer={<p className="muted">Need an account? <Link to="/register">Create one</Link></p>}
-    >
-      <Input label="Email address" placeholder="you@example.com" />
-      <Input label="Password" type="password" placeholder="Enter your password" />
-      <div className="page-header-row">
-        <label className="muted"><input type="checkbox" /> Remember me</label>
-        <Link to="/forgot-password" className="muted">Forgot password?</Link>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
+        <h1 className="text-2xl font-bold text-center mb-6">AI Study Hub</h1>
+        <Input
+          label="Email"
+          type="email"
+          placeholder="student@fpt.edu.vn"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          errorMessage={emailError}
+          required
+        />
+          <Input
+          label="Password"
+          type="password"
+          placeholder="••••••••"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <Button variant="primary" onClick={handleLogin} className="w-full mt-4">
+          Login
+        </Button>
+         <p className="text-center text-sm text-gray-500 mt-4">
+          Don't have an account yet? <a href="#" className="text-blue-600">register</a>
+        </p>
       </div>
-      <Button className="btn-full">Log in</Button>
-    </AuthShell>
+    </div>  
   );
-}
-
+};
 export default LoginPage;
