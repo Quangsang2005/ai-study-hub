@@ -2,6 +2,8 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import PublicLayout from './components/layout/PublicLayout';
 import LoginPage from './pages/auth/LoginPage';
 import RegisterPage from './pages/auth/RegisterPage';
+import ForgotPasswordPage from './pages/auth/ForgotPasswordPage';
+import VerifyEmailPage from './pages/auth/VerifyEmailPage';
 
 function App() {
   return (
@@ -39,14 +41,8 @@ function App() {
           }
         />
         <Route path="register" element={<RegisterPage />} />
-        <Route
-          path="forgot-password"
-          element={
-            <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem', fontWeight: 600 }}>
-              Forgot Password Page (Coming Soon)
-            </div>
-          }
-        />
+        <Route path="forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="verify-email" element={<VerifyEmailPage />} />
       </Route>
 
       {/* Fallback route */}
