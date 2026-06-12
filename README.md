@@ -1,1 +1,1 @@
-# study
+# ai-study-hub

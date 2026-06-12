@@ -4,7 +4,7 @@ import Topbar from './Topbar';
 
 function StudentLayout() {
   return (
-    <div className="dashboard-layout admin-dashboard-layout">
+    <div className="dashboard-layout">
       <StudentSidebar />
       <div className="dashboard-content">
         <Topbar />

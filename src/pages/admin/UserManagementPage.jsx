@@ -9,12 +9,12 @@ function UserManagementPage() {
   const [editForm, setEditForm] = useState({});
 
   const usersData = [
-    { id: 1, name: 'Sarah Jenkins', email: 's.jenkins@study.app', role: 'Admin', plan: 'Pro', folders: 24, tests: 45, type: 'logo', location: 'San Francisco, CA', lastLogin: 'Today, 09:42 AM', latestAction: "Updated permissions for 'Midterm Prep' folder.", actionTime: '2 hours ago' },
-    { id: 2, name: 'Marcus Chen', email: 'm.chen@academy.edu', role: 'Student', plan: 'Plus', folders: 12, tests: 30, type: 'initials', initials: 'MC', color: '#DBEAFE', textColor: '#1D4ED8', location: 'New York, NY', lastLogin: 'Yesterday, 4:15 PM', latestAction: "Completed practice test 'Biology Finals'.", actionTime: '1 day ago' },
-    { id: 3, name: 'Elena Rodriguez', email: 'elena.r@college.net', role: 'Student', plan: 'Basic', folders: 8, tests: 15, type: 'initials', initials: 'ER', color: '#FCE7F3', textColor: '#BE185D', location: 'Miami, FL', lastLogin: 'Today, 07:30 AM', latestAction: "Uploaded 'Chemistry Notes.pdf'.", actionTime: '3 hours ago' },
-    { id: 4, name: 'David Miller', email: 'd.miller@tutors.org', role: 'Tutor', plan: 'Plus', folders: 18, tests: 52, type: 'initials', initials: 'DM', color: '#D1FAE5', textColor: '#047857', location: 'Chicago, IL', lastLogin: 'Today, 11:00 AM', latestAction: "Created quiz 'Advanced Math Ch.5'.", actionTime: '30 minutes ago' },
-    { id: 5, name: 'James Kim', email: 'james.kim@university.edu', role: 'Student', plan: 'Plus', folders: 15, tests: 22, type: 'initials', initials: 'JK', color: '#F3E8FF', textColor: '#7C3AED', location: 'Seattle, WA', lastLogin: '3 days ago', latestAction: "Shared folder 'Physics Notes' with group.", actionTime: '3 days ago' },
-    { id: 6, name: 'Sophia Lee', email: 'sophia.l@testprep.com', role: 'Tutor', plan: 'Pro', folders: 31, tests: 64, type: 'initials', initials: 'SL', color: '#FEF3C7', textColor: '#B45309', location: 'Austin, TX', lastLogin: 'Today, 08:00 AM', latestAction: "Reviewed 15 student submissions.", actionTime: '1 hour ago' },
+    { id: 1, name: 'Sarah Jenkins',    email: 's.jenkins@study.app',       role: 'Admin', plan: 'Pro',   folders: 24, tests: 45, type: 'logo',     location: 'San Francisco, CA', lastLogin: 'Today, 09:42 AM',      latestAction: "Updated permissions for 'Midterm Prep' folder.",   actionTime: '2 hours ago' },
+    { id: 2, name: 'Marcus Chen',      email: 'm.chen@academy.edu',         role: 'User',  plan: 'Plus',  folders: 12, tests: 30, type: 'initials', initials: 'MC', color: '#DBEAFE', textColor: '#1D4ED8', location: 'New York, NY',      lastLogin: 'Yesterday, 4:15 PM', latestAction: "Completed practice test 'Biology Finals'.",          actionTime: '1 day ago' },
+    { id: 3, name: 'Elena Rodriguez',  email: 'elena.r@college.net',        role: 'User',  plan: 'Basic', folders:  8, tests: 15, type: 'initials', initials: 'ER', color: '#FCE7F3', textColor: '#BE185D', location: 'Miami, FL',         lastLogin: 'Today, 07:30 AM',    latestAction: "Uploaded 'Chemistry Notes.pdf'.",                   actionTime: '3 hours ago' },
+    { id: 4, name: 'David Miller',     email: 'd.miller@tutors.org',        role: 'User',  plan: 'Plus',  folders: 18, tests: 52, type: 'initials', initials: 'DM', color: '#D1FAE5', textColor: '#047857', location: 'Chicago, IL',       lastLogin: 'Today, 11:00 AM',    latestAction: "Created quiz 'Advanced Math Ch.5'.",                actionTime: '30 minutes ago' },
+    { id: 5, name: 'James Kim',        email: 'james.kim@university.edu',   role: 'User',  plan: 'Plus',  folders: 15, tests: 22, type: 'initials', initials: 'JK', color: '#F3E8FF', textColor: '#7C3AED', location: 'Seattle, WA',       lastLogin: '3 days ago',         latestAction: "Shared folder 'Physics Notes' with group.",         actionTime: '3 days ago' },
+    { id: 6, name: 'Sophia Lee',       email: 'sophia.l@testprep.com',      role: 'User',  plan: 'Pro',   folders: 31, tests: 64, type: 'initials', initials: 'SL', color: '#FEF3C7', textColor: '#B45309', location: 'Austin, TX',        lastLogin: 'Today, 08:00 AM',    latestAction: "Reviewed 15 student submissions.",                  actionTime: '1 hour ago' },
   ];
 
   const filteredUsers = usersData.filter(user =>
@@ -238,8 +238,7 @@ function UserManagementPage() {
                       onChange={e => setEditForm(f => ({ ...f, role: e.target.value }))}
                     >
                       <option>Admin</option>
-                      <option>Student</option>
-                      <option>Tutor</option>
+                      <option>User</option>
                     </select>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="edit-select-chevron"><path d="m6 9 6 6 6-6" stroke="#8c8a9e" strokeWidth="2" strokeLinecap="round"/></svg>
                   </div>
@@ -304,7 +303,7 @@ function UserManagementPage() {
       {/* ──────── PAGE CONTENT ──────── */}
       <div className="admin-user-mgmt-header">
         <h1>User Management</h1>
-        <button className="add-new-user-btn" type="button" onClick={() => openEdit({ id: 'new', name: '', email: '', role: 'Student', plan: 'Basic', type: 'initials', initials: '?', color: '#E9E8F4', textColor: '#5E5B73' })}>
+        <button className="add-new-user-btn" type="button" onClick={() => openEdit({ id: 'new', name: '', email: '', role: 'User', plan: 'Basic', type: 'initials', initials: '?', color: '#E9E8F4', textColor: '#5E5B73' })}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="btn-icon">
             <path d="M16 21V19C16 17.9391 15.5786 16.9217 14.8284 16.1716C14.0783 15.4214 13.0609 15 12 15H6C4.93913 15 3.92172 15.4214 3.17157 16.1716C2.42143 16.9217 2 17.9391 2 19V21" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
             <circle cx="9" cy="7" r="4" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
